@@ -140,8 +140,8 @@ body, html{
   font-weight: bolder;
   color: lightskyblue;
 
-
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.822);
+/* 
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.822); */
 }
 
 .text2{
@@ -181,7 +181,6 @@ body, html{
 .text-inputs-wrapper{
   display: flex;
   justify-content: center;
-  /* align-items: center; */
 }
 
 input{
@@ -190,12 +189,3 @@ input{
 }
 
 
-
-/* @media print {
-  .document {
-      background-image: url('../themes/theme1.jpg') !important;
-      -webkit-print-color-adjust: exact; 
-      print-color-adjust: exact; 
-  }
-}
- */
