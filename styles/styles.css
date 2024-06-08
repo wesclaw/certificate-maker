@@ -85,7 +85,7 @@ body, html{
   width: 600px;
   height: 400px;
   background-color: white;
-  padding: 10px;
+  /* padding: 10px; */
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -138,6 +138,7 @@ body, html{
   font-family: cursive;
   font-weight: bolder;
   color: #87cefa;
+  /* text-align: center; */
 }
 
 .text2{
@@ -295,3 +296,37 @@ label{
 .reset-btn:hover{
   background-color: rgb(240, 112, 112);
 }
+
+.textarea1{
+  background-color: transparent;
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  line-height: 2.5rem;
+  /* max-width: 80%; */
+  font-family: cursive;
+  font-weight: bolder;
+  color: #87cefa;
+  border: none;
+  outline: none;
+  overflow: hidden;
+  /* position: absolute; */
+  cursor: pointer;
+  
+}
+
+
+
+.textarea2{
+  font-size: 1rem;
+  margin-bottom: 5px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: rgb(56, 56, 56);
+  text-align: center;
+  border: none;
+  outline: none;
+  overflow: hidden;
+}
+
+
