@@ -311,9 +311,6 @@ label{
   border: none;
   outline: none;
   overflow: hidden;
-  /* position: absolute; */
-  cursor: pointer;
-  
 }
 
 
@@ -326,6 +323,40 @@ label{
   text-align: center;
   border: none;
   outline: none;
+  overflow: hidden;
+}
+
+
+
+.final-copy-overlay{
+  background-color: ghostwhite;
+  height: 100vh;
+  width: 100vw;
+
+  /* display: flex; */
+  display: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  background-image: url('../themes/theme1.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden ;
+  position: absolute;
+  top: 0;
+
+}
+
+.final-text-1{
+  font-size: 5rem;
+  text-align: center;
+  background-color: transparent;
+  font-weight: bold;
+  color: lightskyblue;
+  font-family: cursive;
   overflow: hidden;
 }
 
