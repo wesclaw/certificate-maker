@@ -20,7 +20,7 @@ body, html{
 .navbar{
   width: 100vw;
   height: 50px;
-  background-color: rgba(202, 71, 71, 0.671);
+  background-color: black;
 }
 
 .sidebar{
@@ -52,12 +52,14 @@ body, html{
   row-gap: 10px;
   border-radius: 3px;
   box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.404);
-  background-color: rgba(32, 32, 32, 0.89);
+  background-color: black;
 }
 
 .wrapper-for-themes button{
   padding: 30px;
   cursor: pointer;
+  width: 150px;
+  height: 100px;
 }
 
 .theme-text{
@@ -69,6 +71,7 @@ body, html{
   margin-bottom: 10px;
   color: ghostwhite;
   letter-spacing: .1rem;
+  margin-top: 20px;
 }
 
 .edit-mode{
@@ -122,36 +125,21 @@ body, html{
 }
 
 .text1{
-  /* font-size: 3rem;
-  margin-bottom: 20px;
-  line-height: 3rem;
-  max-width: 70%;
-  font-family: cursive;
-  font-weight: bolder;
-  color: lightskyblue; */
-
-
   font-size: 2.5rem;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   margin-top: 20px;
   line-height: 2.5rem;
   max-width: 80%;
   font-family: cursive;
   font-weight: bolder;
   color: lightskyblue;
-
-/* 
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.822); */
 }
 
 .text2{
-  /* color: rgb(56, 56, 56);
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  margin-bottom: 10px; */
-
   font-size: 1rem;
   margin-bottom: 5px;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: rgb(56, 56, 56);
 }
 
 .text3{
@@ -181,11 +169,67 @@ body, html{
 .text-inputs-wrapper{
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.each-input-container{
+  display: flex;
+  width: 100%;
+  gap: 5px;
+  background-color: black;
+  padding: 10px;
 }
 
 input{
-  padding: 7px;
+  padding: 10px 0px 10px 10px;
   font-size: 1rem;
+  width: 100%;
+  border-radius: 3px;
+  border: none;
+  outline: none;
+  color: rgb(56, 56, 56);
 }
 
+select{
+  background-color: black;
+  border: none;
+  color: ghostwhite;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 30%;
+}
 
+label{
+  color: ghostwhite;
+}
+
+.theme1{
+  background-image: url('../themes/theme1.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  overflow: hidden;
+}
+
+.theme2{
+  background-image: url('../themes/theme2.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  overflow: hidden;
+}
+
+.print-btn{
+  width: 100%;
+  background-color: rgb(137, 241, 137);
+  padding: 15px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: black;
+  font-weight: bold;
+  font-family: cursive;
+  margin-top: 20px;
+}
