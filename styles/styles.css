@@ -109,6 +109,10 @@ body, html{
   gap: 50px;
 }
 
+.wrapper-for-themes button:hover{
+  outline: 1px solid white;
+}
+
 .name-one{
   display: flex;
   flex-direction: column;
@@ -194,6 +198,10 @@ body, html{
   outline: none;
   color: rgb(56, 56, 56);
   height: 100%;
+}
+
+.input:focus{
+  outline: 2px dashed rgba(244, 244, 245, 0.452);
 }
 
 .input-number{
