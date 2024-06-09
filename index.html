@@ -8,6 +8,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   </head>
   <body>
    <div class="navbar"></div>
@@ -23,7 +24,7 @@
           <button class="theme2"></button>         
         </div>
         <form>
-          <p class="theme-text">Text</p>
+          <p class="theme-text">Styles</p>
           <div class="text-inputs-wrapper">
             <!-- 1st text -->
             <div class="each-input-container">
@@ -69,8 +70,12 @@
       </div>
       <div class="edit-mode">
         <div class="document">
-          <!-- USE ONLY TEXTAREAS INSTEAD OF P OR H1 TAGS -->
-          <!-- <h1 class="text1">Certificate For Graduation</h1>
+          <!--  -->
+          <div class="border" contenteditable="true">
+            <!-- <span class="drag-wrap"><img src="icons/drag.png" class="drag-icon"></span> -->
+            <h1 class="text1">Certificate For Graduation</h1>    
+          </div>
+                 
           <p class="text2">This certificate is granted to</p>
           <h2 class="text3">Full name</h2>
           <p class="text4">For completing the Sunshine Preschool class of 2024</p>
@@ -83,28 +88,31 @@
               <div class="line"></div>
               <p class="text6">Teacher</p>
             </div>
-          </div> -->
+          </div>
 
 
-          <!-- use textaread here -->
-          <textarea name="" class="textarea textarea1">Certificate For Graduation</textarea>
+          
+          <!-- <textarea name="" class="textarea textarea1">Certificate For Graduation</textarea>
 
           <textarea name="" class="textarea textarea2">This certificate is granted to</textarea>
 
-          <textarea name="" class="textarea textarea3">Full name</textarea>
+          <textarea name="" class="textarea textarea3">Full name</textarea> -->
 
-          <!--keep the font size the same? not able to change the size  -->
+          
 
         </div>
       </div>
    </div>
 
-   <div class="final-copy-overlay">
-    <textarea name="" class="final-text-1">Certificate For Graduation</textarea>
-    <textarea name="" class="textarea textarea2">This certificate is granted to</textarea>
-    <textarea name="" class="textarea textarea3">Full name</textarea>
-   </div>
+  
+
+
+  
     
     <script src="js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+   
   </body>
 </html>

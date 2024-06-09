@@ -54,6 +54,7 @@ body, html{
   border-radius: 3px;
   box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.404);
   background-color: black;
+  border-radius: 5px;
 }
 
 .wrapper-for-themes button{
@@ -82,10 +83,12 @@ body, html{
 }
 
 .document{
-  width: 600px;
-  height: 400px;
+  /* width: 600px;
+  height: 400px; */
+
+  width: 700px;
+  height: 500px;
   background-color: white;
-  /* padding: 10px; */
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -96,8 +99,7 @@ body, html{
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  overflow: hidden;
-  
+  overflow:hidden;
 }
 
 .wrapper-for-names{
@@ -134,7 +136,8 @@ body, html{
   margin-bottom: 10px;
   margin-top: 20px;
   line-height: 2.5rem;
-  max-width: 80%;
+  /* max-width: 70%; */
+  margin: 0 auto;
   font-family: cursive;
   font-weight: bolder;
   color: #87cefa;
@@ -188,6 +191,7 @@ body, html{
   gap: 10px;
   background-color: black;
   padding: 10px;
+  border-radius: 5px;
 }
 
 .input{
@@ -310,10 +314,9 @@ label{
   color: #87cefa;
   border: none;
   outline: none;
-  overflow: hidden;
+  overflow:hidden;
+  /* position: absolute; */
 }
-
-
 
 .textarea2{
   font-size: 1rem;
@@ -326,38 +329,20 @@ label{
   overflow: hidden;
 }
 
-
-
-.final-copy-overlay{
-  background-color: ghostwhite;
-  height: 100vh;
-  width: 100vw;
-
-  /* display: flex; */
-  display: none;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+.border{
+  display: inline-block;
   text-align: center;
-  flex-direction: column;
-  background-image: url('../themes/theme1.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  overflow: hidden ;
+  padding: 0px;
+  resize: both;
+  cursor: nwse-resize; 
+  position: relative;
+}
+
+.drag-icon{
+  width: 30px;
+  height: 30px;
   position: absolute;
-  top: 0;
-
+  cursor:grab;
+  top: -40px;
+  background-color: rgba(224, 220, 220, 0.651);
 }
-
-.final-text-1{
-  font-size: 5rem;
-  text-align: center;
-  background-color: transparent;
-  font-weight: bold;
-  color: lightskyblue;
-  font-family: cursive;
-  overflow: hidden;
-}
-
-
