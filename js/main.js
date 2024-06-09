@@ -138,33 +138,6 @@
 
 
 
-const printBtn = document.querySelector('.print-btn');
-
-printBtn.addEventListener('click', copy);
-
-function copy(e) {
-    e.preventDefault();
-    html2canvas(document.querySelector(".document"), { scale: 4 }).then(canvas => {
-        canvas.style.margin = '0px';
-        canvas.style.width = '100%';
-        canvas.style.height = '100%';
-        const newWindow = window.open();
-        newWindow.document.body.style.margin = '0px'
-        newWindow.document.body.appendChild(canvas);
-        newWindow.print();
-    });
-}
-
-const resetBtn = document.querySelector('.reset-btn')
-
-resetBtn.addEventListener('click',e=>{
-  window.location.reload()
-})
-
-
-
-
-
 // $(function() {
 //   var isResizing = false;
 //   var $resizable = $(".border");
@@ -195,6 +168,134 @@ resetBtn.addEventListener('click',e=>{
 
 
 
+////////////////////////////// this is the zoomed up canvas image
+
+// const canvas = new fabric.Canvas('canvas', {
+//   width: 700,
+//   height: 500,
+//   backgroundColor: 'red'
+// });
+
+// fabric.Image.fromURL('themes/theme1.jpg', function(img) {
+//   // Set image dimensions to match canvas dimensions
+//   img.set({
+//     width: canvas.width,
+//     height: canvas.height,
+//     selectable: false, // Prevent selection
+//     hasControls: false, // Disable controls
+//     hasBorders: false, // Disable borders
+//     lockMovementX: true, // Lock horizontal movement
+//     lockMovementY: true // Lock vertical movement
+//   });
+  
+//   // Add image to canvas
+//   canvas.add(img);
+// });
+
+// // Render canvas after adding image
+// canvas.renderAll();
+
+
+
+//////this is the good size but porr quality on print
+
+const canvas = new fabric.Canvas('canvas', {
+  width: 600,
+  height: 400,
+  backgroundColor: 'red'
+});
+
+fabric.Image.fromURL('themes/theme1.jpg', function(img) {
+  // Calculate the scale to fit the image within the canvas
+  const scaleFactor = Math.min(
+    canvas.width / img.width,
+    canvas.height / img.height
+  );
+
+  // Set image dimensions and position
+  img.scale(scaleFactor).set({
+    left: (canvas.width - img.width * scaleFactor) / 2,
+    top: (canvas.height - img.height * scaleFactor) / 2,
+    selectable: false, // Prevent selection
+    hasControls: false, // Disable controls
+    hasBorders: false, // Disable borders
+    lockMovementX: true, // Lock horizontal movement
+    // lockMovementY: true // Lock vertical movement
+  });
+  
+  // Add image to canvas
+  canvas.add(img);
+});
+
+// Render canvas after adding image
+canvas.renderAll();
+
+
+
+const printBtn = document.querySelector('.print-btn');
+
+printBtn.addEventListener('click', copy);
+
+function copy(e) {
+    e.preventDefault();
+    html2canvas(document.querySelector("#canvas"), { scale: 5 }).then(canvas => {
+        canvas.style.margin = '0px';
+        canvas.style.width = '100%';
+        canvas.style.height = '100%';
+        const newWindow = window.open();
+        newWindow.document.body.style.margin = '0px'
+        newWindow.document.body.appendChild(canvas);
+        newWindow.print();
+    });
+}
+
+const resetBtn = document.querySelector('.reset-btn')
+
+resetBtn.addEventListener('click',e=>{
+  window.location.reload()
+})
+
+
+
+
+//////////making the canvas the whole width of the edit mode and then dragging the img onto the canvas
+
+// const canvasWidth = window.innerWidth - 400; // 400px less than the viewport width
+// const canvasHeight = window.innerHeight - 50; // 50px less than the viewport height
+
+// const canvas = new fabric.Canvas('canvas', {
+//   width: canvasWidth,
+//   height: canvasHeight,
+//   backgroundColor: 'red'
+// });
+
+// fabric.Image.fromURL('themes/theme1.jpg', function(img) {
+//   // Set canvas dimensions to match viewport size
+//   canvas.setDimensions({
+//     width: canvasWidth,
+//     height: canvasHeight
+//   });
+
+//   // Calculate the scale to fit the image within the canvas
+//   const scaleFactor = Math.min(
+//     canvasWidth / img.width,
+//     canvasHeight / img.height
+//   );
+
+//   // Set image dimensions and position
+//   img.scale(scaleFactor).set({
+//     left: (canvasWidth - img.width * scaleFactor) / 2,
+//     top: (canvasHeight - img.height * scaleFactor) / 2,
+    
+//   });
+
+//   img.getElement().classList.add('theme-image');
+//   // Add image to canvas
+//   canvas.add(img);
+
+//   // Render canvas after adding image
+//   canvas.renderAll();
+// });
 
 
 

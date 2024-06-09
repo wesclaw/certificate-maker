@@ -8,7 +8,9 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles/styles.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js" integrity="sha512-CeIsOAsgJnmevfCi2C7Zsyy6bQKi43utIjdA87Q0ZY84oDqnI0uwfM9+bKiIkI75lUeI00WG/+uJzOmuHlesMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   </head>
   <body>
    <div class="navbar"></div>
@@ -69,12 +71,16 @@
         </form>
       </div>
       <div class="edit-mode">
+        <!--  -->
+        <canvas id="canvas">
+            
+        </canvas>
+        <!--  -->
         <div class="document">
           <!--  -->
-          <div class="border" contenteditable="true">
-            <!-- <span class="drag-wrap"><img src="icons/drag.png" class="drag-icon"></span> -->
+          
             <h1 class="text1">Certificate For Graduation</h1>    
-          </div>
+         
                  
           <p class="text2">This certificate is granted to</p>
           <h2 class="text3">Full name</h2>
@@ -97,6 +103,9 @@
           <textarea name="" class="textarea textarea2">This certificate is granted to</textarea>
 
           <textarea name="" class="textarea textarea3">Full name</textarea> -->
+
+
+          
 
           
 

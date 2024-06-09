@@ -85,11 +85,11 @@ body, html{
 .document{
   /* width: 600px;
   height: 400px; */
-
+  display: none;
   width: 700px;
   height: 500px;
   background-color: white;
-  display: flex;
+  /* display: flex; */
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
@@ -338,11 +338,4 @@ label{
   position: relative;
 }
 
-.drag-icon{
-  width: 30px;
-  height: 30px;
-  position: absolute;
-  cursor:grab;
-  top: -40px;
-  background-color: rgba(224, 220, 220, 0.651);
-}
+
