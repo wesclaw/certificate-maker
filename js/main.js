@@ -242,7 +242,7 @@ function copy(e) {
         canvas.style.margin = '0px';
         canvas.style.width = '100%';
         canvas.style.height = '100%';
-        const newWindow = window.open(' ', '_blank');
+        const newWindow = window.open('https://freerecipemaker.com', '_blank');
         newWindow.document.body.style.margin = '0px'
         newWindow.document.body.appendChild(canvas);
         newWindow.print();
