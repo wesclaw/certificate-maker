@@ -120,14 +120,23 @@ fabric.Image.fromURL('themes/theme1.jpg', function(img) {
         hoverCursor: 'default'
     });
 
-    img.getElement().classList.add('theme-image');
-    // Add image to canvas
+   
     canvas.add(img);
     
-    // Save a reference to the image object for later use in the print function
     themeImage = img;
 
-    // Render canvas after adding image
+    const text = new fabric.IText('Certificate for graduation', {
+        left: canvasWidth / 2, 
+        top: canvasHeight / 2, 
+        fontSize: 30, 
+        fill: 'black',
+        editable: true,
+        textAlign: 'center',
+        lineHeight: 0.8,
+        
+    });
+
+    canvas.add(text);
     canvas.renderAll();
 });
 
@@ -190,7 +199,7 @@ async function copy(e) {
             };
         } else {
             console.error('Failed to open new window. Please allow popups for this website.');
-            printBtn.textContent = 'Print';
+            printBtn.textContent = 'Allow popups for this website';
         }
     } catch (error) {
         console.error('Error generating PDF:', error);
@@ -204,7 +213,6 @@ const resetBtn = document.querySelector('.reset-btn');
 resetBtn.addEventListener('click', e => {
     window.location.reload();
 });
-
 
 
 

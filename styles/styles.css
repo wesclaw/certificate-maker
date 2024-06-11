@@ -113,9 +113,9 @@ body, html{
   gap: 50px;
 }
 
-.wrapper-for-themes button:hover{
+/* .wrapper-for-themes button:hover{
   outline: 3px dashed rgba(81, 202, 166, 0.61);
-}
+} */
 
 .name-one{
   display: flex;
@@ -257,14 +257,6 @@ label{
 
 .theme1{
   background-image: url('../themes/theme1.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  overflow: hidden;
-}
-
-.theme2{
-  background-image: url('../themes/theme2.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
