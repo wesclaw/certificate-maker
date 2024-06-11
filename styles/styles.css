@@ -30,14 +30,16 @@ body, html{
   padding: 10px;
   height: calc(100vh - 50px);
   background-color: rgb(43, 42, 42);
+  overflow-y: auto;
 }
 
 .edit-mode{
   width: calc(100vw - 400px);
+  height: calc(100vh - 50px);
   position: absolute;
   right: 0;
-  height: calc(100vh - 50px);
   background-color: rgba(32, 32, 32, 0.89);
+  overflow-y: auto;
 }
 
 .wrapper-for-themes{
@@ -112,7 +114,7 @@ body, html{
 }
 
 .wrapper-for-themes button:hover{
-  outline: 1px solid white;
+  outline: 3px dashed rgba(81, 202, 166, 0.61);
 }
 
 .name-one{
@@ -299,43 +301,6 @@ label{
 
 .reset-btn:hover{
   background-color: rgb(240, 112, 112);
-}
-
-.textarea1{
-  background-color: transparent;
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-  margin-top: 20px;
-  line-height: 2.5rem;
-  /* max-width: 80%; */
-  font-family: cursive;
-  font-weight: bolder;
-  color: #87cefa;
-  border: none;
-  outline: none;
-  overflow:hidden;
-  /* position: absolute; */
-}
-
-.textarea2{
-  font-size: 1rem;
-  margin-bottom: 5px;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  color: rgb(56, 56, 56);
-  text-align: center;
-  border: none;
-  outline: none;
-  overflow: hidden;
-}
-
-.border{
-  display: inline-block;
-  text-align: center;
-  padding: 0px;
-  resize: both;
-  cursor: nwse-resize; 
-  position: relative;
 }
 
 
