@@ -262,6 +262,13 @@ label{
   background-size: contain;
   overflow: hidden;
 }
+.theme2{
+  background-image: url('../themes/theme2.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  overflow: hidden;
+}
 
 .print-btn{
   width: 100%;

@@ -138,6 +138,10 @@
 
 ///////////////////////////without JSPDF creates positioned text elements onload
 
+// 
+const wrapperForThemes = document.querySelector('.wrapper-for-themes');
+
+// 
 
 const canvasWidth = window.innerWidth - 400;
 const canvasHeight = window.innerHeight - 50; 
@@ -188,7 +192,6 @@ fabric.Image.fromURL('themes/theme1.jpg', function(img) {
     const text = new fabric.Textbox('Certificate for graduation', {
         // left: canvasWidth / 2, 
         // top: canvasHeight / 2, 
-        // fontSize: 30, 
         left: textLeft,
         top: textTop,
         fontSize: fontSize,
@@ -261,9 +264,115 @@ fabric.Image.fromURL('themes/theme1.jpg', function(img) {
 
     canvas.add(text4);
 
+    const signatureLineTop = text4Top + (fontSize * 0.6) * 2; // Adjust this value for spacing
+
+    const signatureLineWidth = canvasWidth * 0.15; 
+
+    const signatureLine = new fabric.Line(
+        [textLeft - canvasWidth * 0.2, signatureLineTop, textLeft - canvasWidth * 0.05, signatureLineTop],
+        {
+            stroke: '#000000', // Black color
+            strokeWidth: 2, // Adjust the line width here
+            selectable: true, // Make the line selectable
+            hasControls: true, // Enable controls for resizing
+            hasBorders: true, // Enable borders for the line
+            lockRotation: true, // Lock rotation
+            originX: 'left',
+            originY: 'center'
+        }
+    );
+
+    canvas.add(signatureLine);
+
+    const signatureLine2 = new fabric.Line(
+        [textLeft + canvasWidth * 0.05, signatureLineTop, textLeft + canvasWidth * 0.05 + signatureLineWidth, signatureLineTop],
+        {
+            stroke: '#000000', // Black color
+            strokeWidth: 2, // Adjust the line width here
+            selectable: true, // Make the line selectable
+            hasControls: true, // Enable controls for resizing
+            hasBorders: true, // Enable borders for the line
+            lockRotation: true, // Lock rotation
+            originX: 'left',
+            originY: 'center'
+        }
+    );
+
+    canvas.add(signatureLine2);
+
+    const nameTextBoxTop = signatureLineTop + fontSize * 0.1; // Adjust this value for spacing
+    const nameTextBox1 = new fabric.Textbox('Director', {
+        left: textLeft - canvasWidth * 0.125, // Center under the left signature line
+        top: nameTextBoxTop,
+        fontSize: fontSize * 0.3, // Adjust font size if needed
+        fill: '#000000', // Black color
+        editable: true,
+        textAlign: 'center',
+        lineHeight: 1.2, // Adjust line height as needed
+        fontFamily: 'cursive',
+        originX: 'center',
+        originY: 'top',
+        width: signatureLineWidth,
+    });
+
+    canvas.add(nameTextBox1);
+
+    const nameTextBox2 = new fabric.Textbox('Teacher', {
+        left: textLeft + canvasWidth * 0.125, // Center under the right signature line
+        top: nameTextBoxTop,
+        fontSize: fontSize * 0.3, // Adjust font size if needed
+        fill: '#000000', // Black color
+        editable: true,
+        textAlign: 'center',
+        lineHeight: 1.2, // Adjust line height as needed
+        fontFamily: 'cursive',
+        originX: 'center',
+        originY: 'top',
+        width: signatureLineWidth,
+    });
+
+    canvas.add(nameTextBox2);
 
     canvas.renderAll();
 });
+
+/////////////////////////////////
+wrapperForThemes.addEventListener('click', function(e) {
+    const target = e.target;
+
+    if (target.classList.contains('theme1')) {
+        fabric.Image.fromURL('themes/theme1.jpg', function(img) {
+            setThemeImage(img); // Set theme image for theme1
+        });
+    } else if (target.classList.contains('theme2')) {
+        fabric.Image.fromURL('themes/theme2.jpg', function(img) {
+            setThemeImage(img); // Set theme image for theme2
+        });
+    }
+    
+});
+/////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const printBtn = document.querySelector('.print-btn');
 
@@ -293,7 +402,7 @@ async function copy(e) {
         });
 
         // Convert the canvas to an image data URL
-        const imgData = canvasElement.toDataURL('image/png');
+        const imgData = canvasElement.toDataURL('image/jpeg');
 
         // Create a Blob from the image data URL
         const response = await fetch(imgData);
