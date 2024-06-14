@@ -138,10 +138,10 @@
 
 ///////////////////////////without JSPDF creates positioned text elements onload
 
-// 
+
 const wrapperForThemes = document.querySelector('.wrapper-for-themes');
 
-// 
+
 
 const canvasWidth = window.innerWidth - 400;
 const canvasHeight = window.innerHeight - 50; 
@@ -189,7 +189,7 @@ fabric.Image.fromURL('themes/theme1.jpg', function(img) {
     const textLeft = img.left + (img.width * scaleFactor) / 2; 
     const textTop = img.top + (img.height * scaleFactor) * 0.28 ////change this for text top position
 
-    const text = new fabric.Textbox('Certificate for graduation', {
+    const text = new fabric.Textbox('Certificate Of Graduation', {
         // left: canvasWidth / 2, 
         // top: canvasHeight / 2, 
         left: textLeft,
@@ -352,11 +352,6 @@ wrapperForThemes.addEventListener('click', function(e) {
     
 });
 /////////////////////////////////
-
-
-
-
-
 
 
 
