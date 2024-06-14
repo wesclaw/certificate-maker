@@ -85,7 +85,6 @@
 //             y: top,
 //             width: width,
 //             height: height,
-//             // scale: 2,
 //             //scale: 5,
 //         });
 
@@ -136,6 +135,10 @@
 // });
 
 
+
+///////////////////////////without JSPDF creates positioned text elements onload
+
+
 const canvasWidth = window.innerWidth - 400;
 const canvasHeight = window.innerHeight - 50; 
 
@@ -170,8 +173,7 @@ fabric.Image.fromURL('themes/theme1.jpg', function(img) {
         lockMovementX: true,
         lockMovementY: true,
         hoverCursor: 'default',
-
-        crossOrigin: 'anonymous', // Enable cross-origin requests
+        crossOrigin: 'anonymous', 
         imageSmoothing: true,
         imageSmoothingQuality: 'high'
     });
@@ -179,18 +181,87 @@ fabric.Image.fromURL('themes/theme1.jpg', function(img) {
     canvas.add(img);
     themeImage = img;
 
-    const text = new fabric.IText('Certificate for graduation', {
-        left: canvasWidth / 2, 
-        top: canvasHeight / 2, 
-        fontSize: 30, 
-        fill: 'black',
+    const fontSize = Math.min(img.width * scaleFactor, img.height * scaleFactor) * 0.1;
+    const textLeft = img.left + (img.width * scaleFactor) / 2; 
+    const textTop = img.top + (img.height * scaleFactor) * 0.28 ////change this for text top position
+
+    const text = new fabric.Textbox('Certificate for graduation', {
+        // left: canvasWidth / 2, 
+        // top: canvasHeight / 2, 
+        // fontSize: 30, 
+        left: textLeft,
+        top: textTop,
+        fontSize: fontSize,
+        fill: '#87cefa',
+        fontWeight: '600',
         editable: true,
         textAlign: 'center',
         lineHeight: 0.8,
         fontFamily: 'cursive',
+        originX: 'center',
+        originY: 'center',
+
+        width: canvasWidth * 0.48, ////change this for the starting text wrap pos
     });
 
     canvas.add(text);
+
+    const text2Top = textTop + fontSize * 1.5; // Adjust this value as needed for spacing
+    const text2 = new fabric.Textbox('This certificate is granted to', {
+        left: textLeft,
+        top: text2Top,
+        fontSize: fontSize * 0.4, // Adjust font size if needed
+        fill: 'black', // Light blue color
+        fontWeight: '200',
+        editable: true,
+        textAlign: 'center',
+        lineHeight: 0.8,
+        fontFamily: 'serif',
+        originX: 'center',
+        originY: 'center',
+        width: canvasWidth * 0.5,
+    });
+
+    canvas.add(text2);
+
+    const text3Top = text2Top + fontSize * .8; // Adjust this value as needed for spacing
+    const text3 = new fabric.Textbox('FULL NAME', {
+        left: textLeft,
+        top: text3Top,
+        fontSize: fontSize * 0.7, // Adjust font size if needed
+        fill: 'black', // Light blue color
+        fontWeight: 'bold',
+        editable: true,
+        textAlign: 'center',
+        lineHeight: 0.8,
+        fontFamily: 'serif',
+        originX: 'center',
+        originY: 'center',
+        width: canvasWidth * 0.5,
+    });
+
+    canvas.add(text3);
+
+    const text4Top = text3Top + fontSize * 1; // Adjust this value as needed for spacing
+    const text4 = new fabric.Textbox('For completing the Sunshine Preschool class of 2024', {
+        left: textLeft,
+        top: text4Top,
+        fontSize: fontSize * 0.4, // Adjust font size if needed
+        fill: 'black', // Light blue color
+        fontWeight: '200',
+        editable: true,
+        textAlign: 'center',
+        lineHeight: 0.8,
+        fontFamily: 'serif',
+        originX: 'center',
+        originY: 'center',
+        width: canvasWidth * 0.4,
+        lineHeight: 1.1,
+    });
+
+    canvas.add(text4);
+
+
     canvas.renderAll();
 });
 
@@ -249,3 +320,12 @@ const resetBtn = document.querySelector('.reset-btn');
 resetBtn.addEventListener('click', e => {
     window.location.reload();
 });
+
+
+
+
+
+
+
+
+
