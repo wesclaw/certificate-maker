@@ -136,10 +136,38 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ///////////////////////////without JSPDF creates positioned text elements onload
 
 
-// const wrapperForThemes = document.querySelector('.wrapper-for-themes');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -337,20 +365,7 @@
 // });
 
 // /////////////////////////////////
-// wrapperForThemes.addEventListener('click', function(e) {
-//     const target = e.target;
 
-//     if (target.classList.contains('theme1')) {
-//         fabric.Image.fromURL('themes/theme1.jpg', function(img) {
-//             setThemeImage(img); // Set theme image for theme1
-//         });
-//     } else if (target.classList.contains('theme2')) {
-//         fabric.Image.fromURL('themes/theme2.jpg', function(img) {
-//             setThemeImage(img); // Set theme image for theme2
-//         });
-//     }
-    
-// });
 /////////////////////////////////
 
 
@@ -390,11 +405,18 @@
 
 
 const wrapperForThemes = document.querySelector('.wrapper-for-themes');
-const canvas = new fabric.Canvas('canvas'); // Assuming you have a canvas element with id 'c'
+const canvas = new fabric.Canvas('canvas'); 
 let canvasWidth = window.innerWidth - 400;
 let canvasHeight = window.innerHeight - 50;
 let themeImage;
 const textElements = [];
+
+const fontSelect = document.getElementById('fontSelect');
+
+let fontFamily;
+let fontWeight;
+let textColor;
+let lineHeight;
 
 // Function to set the initial theme image
 function setInitialThemeImage(img) {
@@ -446,11 +468,17 @@ function setInitialThemeImage(img) {
         originX: 'center',
         originY: 'center',
         width: canvasWidth * 0.48,
+        objectCaching: false,
     });
-
     
     canvas.add(text);
     textElements.push(text);
+
+    text.on('selected', ()=> {
+        text.fill = 'black'
+        canvas.renderAll()
+        
+    })
 
     const text2Top = textTop + fontSize * 1.5;
     const text2 = new fabric.Textbox('This certificate is granted to', {
@@ -580,24 +608,8 @@ function setInitialThemeImage(img) {
     textElements.push(nameTextBox2);
 
     canvas.renderAll();
-
-    // 
-    
-    
-
     
 }
-
-function changeFont(text){
-    const activeObject = canvas.getActiveObject();
-    if (activeObject === text) {
-        console.log('nameTextBox2 is selected');
-    } else {
-        console.log('nameTextBox2 is not selected');
-    }
-}
-
-changeFont()
 
 // Load the initial theme image
 fabric.Image.fromURL('themes/theme1.jpg', function(img) {
