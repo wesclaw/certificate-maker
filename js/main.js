@@ -474,10 +474,14 @@ function setInitialThemeImage(img) {
     canvas.add(text);
     textElements.push(text);
 
+  
+
     text.on('selected', ()=> {
-        text.fill = 'black'
-        canvas.renderAll()
-        
+           
+    })
+
+    text.on('deselected', ()=> {
+         
     })
 
     const text2Top = textTop + fontSize * 1.5;
@@ -658,7 +662,6 @@ document.querySelector('.wrapper-for-themes').addEventListener('click', function
         changeBackgroundImage('themes/theme2.jpg');
     }
 });
-
 
 
 
