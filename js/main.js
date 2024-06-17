@@ -450,6 +450,14 @@ function setInitialThemeImage(img) {
     canvas.add(img);
     themeImage = img;
 
+
+    // 
+   
+    
+
+
+    // 
+
     // Add text elements
     let fontSize = Math.min(img.width * scaleFactor, img.height * scaleFactor) * 0.1;
     const textLeft = img.left + (img.width * scaleFactor) / 2;
@@ -473,7 +481,6 @@ function setInitialThemeImage(img) {
     
     canvas.add(text);
     textElements.push(text);
-
   
 
     text.on('selected', ()=> {
