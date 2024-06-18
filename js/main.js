@@ -376,297 +376,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/////////////////////////good version
-
-
-
-
-
-
-// const wrapperForThemes = document.querySelector('.wrapper-for-themes');
-// const canvas = new fabric.Canvas('canvas'); 
-// let canvasWidth = window.innerWidth - 400;
-// let canvasHeight = window.innerHeight - 50;
-// let themeImage;
-// const textElements = [];
-
-// const fontSelect = document.getElementById('fontSelect');
-
-// let fontFamily;
-// let fontWeight;
-// let textColor;
-// let lineHeight;
-
-// // Function to set the initial theme image
-// function setInitialThemeImage(img) {
-//     // Set canvas dimensions to match viewport size
-//     canvas.setDimensions({
-//         width: canvasWidth,
-//         height: canvasHeight
-//     });
-
-//     // Calculate the scale to fit the image within the canvas
-//     const scaleFactor = Math.min(
-//         canvasWidth / img.width,
-//         canvasHeight / img.height
-//     );
-
-//     // Set image dimensions and position
-//     img.scale(scaleFactor).set({
-//         left: (canvasWidth - img.width * scaleFactor) / 2,
-//         top: (canvasHeight - img.height * scaleFactor) / 2,
-//         selectable: false,
-//         hasControls: false,
-//         hasBorders: false,
-//         lockMovementX: true,
-//         lockMovementY: true,
-//         hoverCursor: 'default',
-//         crossOrigin: 'anonymous',
-//         imageSmoothing: true,
-//         imageSmoothingQuality: 'high'
-//     });
-
-//     canvas.add(img);
-//     themeImage = img;
-
-//     let fontSize = Math.min(img.width * scaleFactor, img.height * scaleFactor) * 0.1;
-//     const textLeft = img.left + (img.width * scaleFactor) / 2;
-//     const textTop = img.top + (img.height * scaleFactor) * 0.28;
-
-//     const text = new fabric.Textbox('Certificate Of Graduation', {
-//         left: textLeft,
-//         top: textTop,
-//         fontSize: fontSize,
-//         fill: '#87cefa',
-//         fontWeight: '600',
-//         editable: true,
-//         textAlign: 'center',
-//         lineHeight: 0.8,
-//         fontFamily: 'cursive',
-//         originX: 'center',
-//         originY: 'center',
-//         width: canvasWidth * 0.48,
-//         objectCaching: false,
-//     });
-    
-//     canvas.add(text);
-//     textElements.push(text);
-
-
-
-//     // text.on('selected', ()=> {
-           
-//     // })
-
-//     // text.on('deselected', ()=> {
-         
-//     // })
-
-//     const text2Top = textTop + fontSize * 1.5;
-//     const text2 = new fabric.Textbox('This certificate is granted to', {
-//         left: textLeft,
-//         top: text2Top,
-//         fontSize: fontSize * 0.4,
-//         fill: 'black',
-//         fontWeight: '200',
-//         editable: true,
-//         textAlign: 'center',
-//         lineHeight: 0.8,
-//         fontFamily: 'serif',
-//         originX: 'center',
-//         originY: 'center',
-//         width: canvasWidth * 0.5,
-//     });
-
-//     canvas.add(text2);
-//     textElements.push(text2);
-
-//     const text3Top = text2Top + fontSize * .8;
-//     const text3 = new fabric.Textbox('FULL NAME', {
-//         left: textLeft,
-//         top: text3Top,
-//         fontSize: fontSize * 0.7,
-//         fill: 'black',
-//         fontWeight: 'bold',
-//         editable: true,
-//         textAlign: 'center',
-//         lineHeight: 0.8,
-//         fontFamily: 'serif',
-//         originX: 'center',
-//         originY: 'center',
-//         width: canvasWidth * 0.5,
-//     });
-
-//     canvas.add(text3);
-//     textElements.push(text3);
-
-//     const text4Top = text3Top + fontSize * 1;
-//     const text4 = new fabric.Textbox('For completing the Sunshine Preschool class of 2024', {
-//         left: textLeft,
-//         top: text4Top,
-//         fontSize: fontSize * 0.4,
-//         fill: 'black',
-//         fontWeight: '200',
-//         editable: true,
-//         textAlign: 'center',
-//         lineHeight: 1.1,
-//         fontFamily: 'serif',
-//         originX: 'center',
-//         originY: 'center',
-//         width: canvasWidth * 0.4,
-//     });
-
-//     canvas.add(text4);
-//     textElements.push(text4);
-
-//     const signatureLineTop = text4Top + (fontSize * 0.6) * 2;
-//     const signatureLineWidth = canvasWidth * 0.15;
-
-//     const signatureLine = new fabric.Line(
-//         [textLeft - canvasWidth * 0.2, signatureLineTop, textLeft - canvasWidth * 0.05, signatureLineTop],
-//         {
-//             stroke: '#000000',
-//             strokeWidth: 2,
-//             selectable: true,
-//             hasControls: true,
-//             hasBorders: true,
-//             lockRotation: true,
-//             originX: 'left',
-//             originY: 'center'
-//         }
-//     );
-
-//     canvas.add(signatureLine);
-
-//     const signatureLine2 = new fabric.Line(
-//         [textLeft + canvasWidth * 0.05, signatureLineTop, textLeft + canvasWidth * 0.05 + signatureLineWidth, signatureLineTop],
-//         {
-//             stroke: '#000000',
-//             strokeWidth: 2,
-//             selectable: true,
-//             hasControls: true,
-//             hasBorders: true,
-//             lockRotation: true,
-//             originX: 'left',
-//             originY: 'center'
-//         }
-//     );
-
-//     canvas.add(signatureLine2);
-
-//     const nameTextBoxTop = signatureLineTop + fontSize * 0.1;
-//     const nameTextBox1 = new fabric.Textbox('Director', {
-//         left: textLeft - canvasWidth * 0.125,
-//         top: nameTextBoxTop,
-//         fontSize: fontSize * 0.3,
-//         fill: '#000000',
-//         editable: true,
-//         textAlign: 'center',
-//         lineHeight: 1.2,
-//         fontFamily: 'cursive',
-//         originX: 'center',
-//         originY: 'top',
-//         width: signatureLineWidth,
-//     });
-
-//     canvas.add(nameTextBox1);
-//     textElements.push(nameTextBox1);
-
-//     const nameTextBox2 = new fabric.Textbox('Teacher', {
-//         left: textLeft + canvasWidth * 0.125,
-//         top: nameTextBoxTop,
-//         fontSize: fontSize * 0.3,
-//         fill: '#000000',
-//         editable: true,
-//         textAlign: 'center',
-//         lineHeight: 1.2,
-//         fontFamily: 'cursive',
-//         originX: 'center',
-//         originY: 'top',
-//         width: signatureLineWidth,
-//     });
-
-//     canvas.add(nameTextBox2);
-//     textElements.push(nameTextBox2);
-
-//     canvas.renderAll();
-    
-// }
-
-// // Load the initial theme image
-// fabric.Image.fromURL('themes/theme1.jpg', function(img) {
-//     setInitialThemeImage(img);
-// });
-
-// // Function to change the background image
-// function changeBackgroundImage(url) {
-//     fabric.Image.fromURL(url, function(img) {
-//         const scaleFactor = Math.min(
-//             canvasWidth / img.width,
-//             canvasHeight / img.height
-//         );
-
-//         img.scale(scaleFactor).set({
-//             left: (canvasWidth - img.width * scaleFactor) / 2,
-//             top: (canvasHeight - img.height * scaleFactor) / 2,
-//             selectable: false,
-//             hasControls: false,
-//             hasBorders: false,
-//             lockMovementX: true,
-//             lockMovementY: true,
-//             hoverCursor: 'default',
-//             crossOrigin: 'anonymous',
-//             imageSmoothing: true,
-//             imageSmoothingQuality: 'high'
-//         });
-
-//         if (themeImage) {
-//             canvas.remove(themeImage);
-//         }
-//         canvas.add(img);
-//         canvas.sendToBack(img);
-//         themeImage = img;
-//         canvas.renderAll();
-//     });
-// }
-
-// // Handle the click events on the theme buttons
-// document.querySelector('.wrapper-for-themes').addEventListener('click', function(e) {
-//     const target = e.target;
-
-//     if (target.classList.contains('theme1')) {
-//         changeBackgroundImage('themes/theme1.jpg');
-//     } else if (target.classList.contains('theme2')) {
-//         changeBackgroundImage('themes/theme2.jpg');
-//     }
-// });
-
-
-
-
-
-
 const wrapperForThemes = document.querySelector('.wrapper-for-themes');
 const canvas = new fabric.Canvas('canvas'); 
 let canvasWidth = window.innerWidth - 400;
@@ -758,14 +467,29 @@ function setInitialThemeImage(img) {
     deleteButton.style.cursor = 'pointer';
     deleteButton.style.borderRadius = '3px';
 
+    const centerButton = document.createElement('button');
+    centerButton.id = 'centerButton';
+    centerButton.innerText = 'Center';
+    centerButton.style.background = '#4caf50';
+    centerButton.style.color = 'white';
+    centerButton.style.border = '3px solid black';
+    centerButton.style.padding = '5px 10px';
+    centerButton.style.cursor = 'pointer';
+    centerButton.style.borderRadius = '3px';
+    centerButton.style.marginLeft = '5px';
+
+    
     optionsBubble.appendChild(deleteButton);
+    optionsBubble.appendChild(centerButton);
     document.body.appendChild(optionsBubble);
 
     function positionOptionsBubble(target) {
         const boundingRect = canvas.upperCanvasEl.getBoundingClientRect();
         const textRect = target.getBoundingRect();
-        optionsBubble.style.left = `${boundingRect.left + textRect.left}px`;
+        optionsBubble.style.transition = '0s'
+        optionsBubble.style.left = `${boundingRect.left + textRect.left}px`;   
         optionsBubble.style.top = `${boundingRect.top + textRect.top - optionsBubble.offsetHeight}px`;
+        optionsBubble.style.transition = '0s';
     }
 
     text.on('selected', () => {
@@ -784,6 +508,15 @@ function setInitialThemeImage(img) {
     deleteButton.addEventListener('click', () => {
         canvas.remove(text);
         optionsBubble.style.display = 'none';
+    });
+
+    centerButton.addEventListener('click', () => {
+        text.set({
+            left: canvasWidth / 2
+        });
+        text.setCoords();  // Update the bounding box
+        canvas.renderAll();
+        positionOptionsBubble(text);
     });
 
     const text2Top = textTop + fontSize * 1.5;
