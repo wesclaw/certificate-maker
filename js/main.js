@@ -373,14 +373,22 @@
 
 
 
+//////////////////////////////////////
+
+
+
 
 
 
 const wrapperForThemes = document.querySelector('.wrapper-for-themes');
+
 const canvas = new fabric.Canvas('canvas'); 
+
 let canvasWidth = window.innerWidth - 400;
 let canvasHeight = window.innerHeight - 50;
+
 let themeImage;
+
 const textElements = [];
 
 const fontSelect = document.getElementById('fontSelect');
@@ -444,80 +452,7 @@ function setInitialThemeImage(img) {
     
     canvas.add(text);
     textElements.push(text);
-
-    // Create options bubble dynamically
-    const optionsBubble = document.createElement('div');
-    optionsBubble.id = 'optionsBubble';
-    optionsBubble.style.position = 'absolute';
-    optionsBubble.style.display = 'none';
-    optionsBubble.style.background = 'white';
-    optionsBubble.style.border = '1px solid #ccc';
-    optionsBubble.style.padding = '5px';
-    optionsBubble.style.borderRadius = '5px';
-    optionsBubble.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.2)';
-    optionsBubble.style.zIndex = '1000';
-
-    const deleteButton = document.createElement('button');
-    deleteButton.id = 'deleteButton';
-    deleteButton.innerText = 'Delete';
-    deleteButton.style.background = '#ff4d4d';
-    deleteButton.style.color = 'white';
-    deleteButton.style.border = 'none';
-    deleteButton.style.padding = '5px 10px';
-    deleteButton.style.cursor = 'pointer';
-    deleteButton.style.borderRadius = '3px';
-
-    const centerButton = document.createElement('button');
-    centerButton.id = 'centerButton';
-    centerButton.innerText = 'Center';
-    centerButton.style.background = '#4caf50';
-    centerButton.style.color = 'white';
-    centerButton.style.border = '3px solid black';
-    centerButton.style.padding = '5px 10px';
-    centerButton.style.cursor = 'pointer';
-    centerButton.style.borderRadius = '3px';
-    centerButton.style.marginLeft = '5px';
-
-    
-    optionsBubble.appendChild(deleteButton);
-    optionsBubble.appendChild(centerButton);
-    document.body.appendChild(optionsBubble);
-
-    function positionOptionsBubble(target) {
-        const boundingRect = canvas.upperCanvasEl.getBoundingClientRect();
-        const textRect = target.getBoundingRect();
-        optionsBubble.style.transition = '0s'
-        optionsBubble.style.left = `${boundingRect.left + textRect.left}px`;   
-        optionsBubble.style.top = `${boundingRect.top + textRect.top - optionsBubble.offsetHeight}px`;
-        optionsBubble.style.transition = '0s';
-    }
-
-    text.on('selected', () => {
-        positionOptionsBubble(text);
-        optionsBubble.style.display = 'block';
-    });
-
-    text.on('deselected', () => {
-        optionsBubble.style.display = 'none';
-    });
-
-    text.on('moving', () => {
-        positionOptionsBubble(text);
-    });
-
-    deleteButton.addEventListener('click', () => {
-        canvas.remove(text);
-        optionsBubble.style.display = 'none';
-    });
-
-    centerButton.addEventListener('click', () => {
-        text.set({
-            left: canvasWidth / 2
-        });
-        text.setCoords();  // Update the bounding box
-        canvas.renderAll();
-        positionOptionsBubble(text);
-    });
+    createOptionsBubble(text);
 
     const text2Top = textTop + fontSize * 1.5;
     const text2 = new fabric.Textbox('This certificate is granted to', {
@@ -537,6 +472,7 @@ function setInitialThemeImage(img) {
 
     canvas.add(text2);
     textElements.push(text2);
+    createOptionsBubble(text2);
 
     const text3Top = text2Top + fontSize * 0.8;
     const text3 = new fabric.Textbox('FULL NAME', {
@@ -556,6 +492,7 @@ function setInitialThemeImage(img) {
 
     canvas.add(text3);
     textElements.push(text3);
+    createOptionsBubble(text3);
 
     const text4Top = text3Top + fontSize * 1;
     const text4 = new fabric.Textbox('For completing the Sunshine Preschool class of 2024', {
@@ -575,6 +512,7 @@ function setInitialThemeImage(img) {
 
     canvas.add(text4);
     textElements.push(text4);
+    createOptionsBubble(text4);
 
     const signatureLineTop = text4Top + (fontSize * 0.6) * 2;
     const signatureLineWidth = canvasWidth * 0.15;
@@ -594,6 +532,7 @@ function setInitialThemeImage(img) {
     );
 
     canvas.add(signatureLine);
+    createOptionsBubble(signatureLine);
 
     const signatureLine2 = new fabric.Line(
         [textLeft + canvasWidth * 0.05, signatureLineTop, textLeft + canvasWidth * 0.05 + signatureLineWidth, signatureLineTop],
@@ -610,6 +549,7 @@ function setInitialThemeImage(img) {
     );
 
     canvas.add(signatureLine2);
+    createOptionsBubble(signatureLine2);
 
     const nameTextBoxTop = signatureLineTop + fontSize * 0.1;
     const nameTextBox1 = new fabric.Textbox('Director', {
@@ -628,6 +568,7 @@ function setInitialThemeImage(img) {
 
     canvas.add(nameTextBox1);
     textElements.push(nameTextBox1);
+    createOptionsBubble(nameTextBox1);
 
     const nameTextBox2 = new fabric.Textbox('Teacher', {
         left: textLeft + canvasWidth * 0.125,
@@ -645,8 +586,163 @@ function setInitialThemeImage(img) {
 
     canvas.add(nameTextBox2);
     textElements.push(nameTextBox2);
+    createOptionsBubble(nameTextBox2);
 
     canvas.renderAll();
+}
+
+// Function to create the options bubble for each text element
+function createOptionsBubble(textElement) {
+    const optionsBubble = document.createElement('div');
+    optionsBubble.className = 'optionsBubble';
+    optionsBubble.style.position = 'absolute';
+    optionsBubble.style.display = 'none';
+    optionsBubble.style.background = 'white';
+    optionsBubble.style.border = '1px solid #ccc';
+    optionsBubble.style.padding = '5px';
+    optionsBubble.style.borderRadius = '5px';
+    optionsBubble.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.2)';
+    optionsBubble.style.zIndex = '1000';
+
+    const deleteButton = document.createElement('button');
+    deleteButton.innerText = 'Delete';
+    deleteButton.style.background = '#ff4d4d';
+    deleteButton.style.color = 'white';
+    deleteButton.style.border = 'none';
+    deleteButton.style.padding = '5px 10px';
+    deleteButton.style.cursor = 'pointer';
+    deleteButton.style.borderRadius = '3px';
+
+    const centerButton = document.createElement('button');
+    centerButton.innerText = 'Center';
+    centerButton.style.background = '#4caf50';
+    centerButton.style.color = 'white';
+    centerButton.style.border = '3px solid black';
+    centerButton.style.padding = '5px 10px';
+    centerButton.style.cursor = 'pointer';
+    centerButton.style.borderRadius = '3px';
+    centerButton.style.marginLeft = '5px';
+
+    optionsBubble.appendChild(deleteButton);
+    optionsBubble.appendChild(centerButton);
+    document.body.appendChild(optionsBubble);
+
+    function positionOptionsBubble(target) {
+        const boundingRect = canvas.upperCanvasEl.getBoundingClientRect();
+        const textRect = target.getBoundingRect();
+        optionsBubble.style.left = `${boundingRect.left + textRect.left}px`;
+        optionsBubble.style.top = `${boundingRect.top + textRect.top - optionsBubble.offsetHeight}px`;
+    }
+
+    textElement.on('selected', () => {
+        positionOptionsBubble(textElement);
+        optionsBubble.style.display = 'inline-block';
+    });
+
+    textElement.on('deselected', () => {
+        optionsBubble.style.display = 'none';
+    });
+
+    textElement.on('moving', () => {
+        positionOptionsBubble(textElement);
+    });
+
+    deleteButton.addEventListener('click', () => {
+        canvas.remove(textElement);
+        optionsBubble.style.display = 'none';
+    });
+
+    centerButton.addEventListener('click', () => {
+        textElement.set({
+            left: canvasWidth / 2
+        });
+        textElement.setCoords();  // Update the bounding box
+        canvas.renderAll();
+        positionOptionsBubble(textElement);
+    });
+
+    // this also works but with 8 clicks more visiblie
+
+    canvas.on('selection:created', function(e) {
+        if (e.selected.length > 1) {
+            e.selected.forEach(element => {
+                // canvas.remove(element)
+                positionOptionsBubble(element)
+            });
+        } 
+    });
+
+
+    // canvas.on('selection:cleared', function() {
+        
+    // });
+
+
+    //////////////////////trying to make it delete all instead of one at a time on click 
+
+    // canvas.on('selection:created', function(e) {
+        
+    //     if (e.selected.length > 1) {
+    //         // Remove any existing options bubbles
+    //         const existingBubbles = document.querySelectorAll('.optionsBubble');
+    //         // existingBubbles.forEach(bubble => bubble.remove());
+    //         existingBubbles.forEach(bubble => bubble.style.display = 'none');
+    
+    //         // Create a new options bubble
+    //         const newOptionsBubble = document.createElement('div');
+    //         newOptionsBubble.className = 'newOptionsBubble'; // Use original class name
+    //         newOptionsBubble.style.position = 'absolute';
+    //         newOptionsBubble.style.display = 'block'; // Initially show the options bubble
+    //         newOptionsBubble.style.background = 'white';
+    //         newOptionsBubble.style.border = '1px solid #ccc';
+    //         newOptionsBubble.style.padding = '5px';
+    //         newOptionsBubble.style.borderRadius = '5px';
+    //         newOptionsBubble.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.2)';
+    //         newOptionsBubble.style.zIndex = '1000';
+    
+    //         const deleteButton = document.createElement('button');
+    //         deleteButton.innerText = 'Delete';
+    //         deleteButton.style.background = '#ff4d4d';
+    //         deleteButton.style.color = 'white';
+    //         deleteButton.style.border = 'none';
+    //         deleteButton.style.padding = '5px 10px';
+    //         deleteButton.style.cursor = 'pointer';
+    //         deleteButton.style.borderRadius = '3px';
+    
+    //         const centerButton = document.createElement('button');
+    //         centerButton.innerText = 'Center';
+    //         centerButton.style.background = '#4caf50';
+    //         centerButton.style.color = 'white';
+    //         centerButton.style.border = '3px solid black';
+    //         centerButton.style.padding = '5px 10px';
+    //         centerButton.style.cursor = 'pointer';
+    //         centerButton.style.borderRadius = '3px';
+    //         centerButton.style.marginLeft = '5px';
+    
+    //         newOptionsBubble.appendChild(deleteButton);
+    //         newOptionsBubble.appendChild(centerButton);
+    //         document.body.appendChild(newOptionsBubble);
+    
+    //         // Handle button actions
+    //         deleteButton.addEventListener('click', function() {
+    //             e.selected.forEach(element => {
+    //                 canvas.remove(element);
+    //             });
+    //             newOptionsBubble.remove(); // Remove options bubble after deletion
+    //         });
+    //     } else {
+    //         // Remove any existing newOptionsBubble
+            
+    //     }
+    // });
+
+    // canvas.on('selection:cleared', ()=> {
+    //     console.log('nothing is selected')
+        
+    // });
+
+
+    // 
 }
 
 // Load the initial theme image
@@ -698,17 +794,7 @@ document.querySelector('.wrapper-for-themes').addEventListener('click', function
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
+///////////////////////////////
 
 
 
