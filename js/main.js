@@ -398,9 +398,9 @@ let fontWeight;
 let textColor;
 let lineHeight;
 
-// Function to set the initial theme image
+
 function setInitialThemeImage(img) {
-    // Set canvas dimensions to match viewport size
+    
     canvas.setDimensions({
         width: canvasWidth,
         height: canvasHeight
@@ -636,7 +636,7 @@ function createOptionsBubble(textElement) {
 
     textElement.on('selected', () => {
         positionOptionsBubble(textElement);
-        optionsBubble.style.display = 'inline-block';
+        optionsBubble.style.display = 'block';
     });
 
     textElement.on('deselected', () => {
@@ -667,10 +667,15 @@ function createOptionsBubble(textElement) {
         if (e.selected.length > 1) {
             e.selected.forEach(element => {
                 // canvas.remove(element)
-                positionOptionsBubble(element)
+                console.log(element)
+                // positionOptionsBubble(element)
             });
+            canvas.discardActiveObject();
+            canvas.renderAll();
         } 
     });
+
+   
 
 
     // canvas.on('selection:cleared', function() {
