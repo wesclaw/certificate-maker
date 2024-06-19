@@ -68,7 +68,6 @@ body, html{
 
 .theme-text{
   font-size: 1.5rem;
-  font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   text-transform: uppercase;
   font-weight: bold;
@@ -76,6 +75,10 @@ body, html{
   color: ghostwhite;
   letter-spacing: .1rem;
   margin-top: 20px;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
 }
 
 .edit-mode{
@@ -113,11 +116,11 @@ body, html{
   gap: 50px;
 }
 
-/* .wrapper-for-themes button:hover{
-  outline: 3px dashed rgba(81, 202, 166, 0.61);
-} */
+.wrapper-for-themes button:hover{
+  outline: 2px dashed ghostwhite;
+}
 
-.name-one{
+/* .name-one{
   display: flex;
   flex-direction: column;
 }
@@ -138,12 +141,10 @@ body, html{
   margin-bottom: 10px;
   margin-top: 20px;
   line-height: 2.5rem;
-  /* max-width: 70%; */
   margin: 0 auto;
   font-family: cursive;
   font-weight: bolder;
   color: #87cefa;
-  /* text-align: center; */
 }
 
 .text2{
@@ -175,7 +176,7 @@ body, html{
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   margin-bottom: 10px;
   font-weight: bold;
-}
+} */
 
 .text-inputs-wrapper{
   display: flex;
@@ -250,9 +251,12 @@ select{
 
 label{
   color: ghostwhite;
-  font-family: sans-serif;
-  font-weight: bold;
   margin-bottom: 5px;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: .05em;
 }
 
 .theme1{
@@ -261,6 +265,7 @@ label{
   background-repeat: no-repeat;
   background-size: contain;
   overflow: hidden;
+  outline: 2px dashed ghostwhite;
 }
 .theme2{
   background-image: url('../themes/theme2.jpg');
@@ -270,6 +275,10 @@ label{
   overflow: hidden;
 }
 
+.activeTheme{
+  outline: 2px dashed ghostwhite;
+}
+
 .print-btn{
   width: 100%;
   background-color: rgb(137, 241, 137);
@@ -277,9 +286,12 @@ label{
   font-size: 1.3rem;
   cursor: pointer;
   color: black;
-  font-weight: bold;
-  font-family: cursive;
   margin-top: 10px;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: .05em;
 }
 
 .print-btn:hover{
@@ -294,7 +306,11 @@ label{
   cursor: pointer;
   color: black;
   font-weight: bold;
-  font-family: cursive;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: .05em;
   margin-top: 20px;
 }
 

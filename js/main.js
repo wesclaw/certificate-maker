@@ -605,37 +605,46 @@ function createOptionsBubble(textElement) {
     optionsBubble.style.zIndex = '1000';
 
     const deleteButton = document.createElement('button');
-    deleteButton.innerText = 'Delete';
-    deleteButton.style.background = '#ff4d4d';
-    deleteButton.style.color = 'white';
-    deleteButton.style.border = 'none';
+    deleteButton.style.background = 'lightgray';
     deleteButton.style.padding = '5px 10px';
     deleteButton.style.cursor = 'pointer';
     deleteButton.style.borderRadius = '3px';
 
+    const deleteIcon = document.createElement('img');
+    deleteIcon.src = 'icons/delete.png';
+    deleteIcon.style.width = '30px'; 
+    deleteIcon.style.height = '30px'; 
+    deleteIcon.style.verticalAlign = 'middle'; 
+    deleteButton.appendChild(deleteIcon);
+
     const centerButton = document.createElement('button');
-    centerButton.innerText = 'Center';
-    centerButton.style.background = '#4caf50';
-    centerButton.style.color = 'white';
-    centerButton.style.border = '3px solid black';
+    centerButton.style.background = 'ghostwhite';
     centerButton.style.padding = '5px 10px';
     centerButton.style.cursor = 'pointer';
     centerButton.style.borderRadius = '3px';
     centerButton.style.marginLeft = '5px';
 
+    const centerIcon = document.createElement('img');
+    centerIcon.src = 'icons/center.png'; 
+    centerIcon.style.width = '30px'; 
+    centerIcon.style.height = '30px'; 
+    centerIcon.style.verticalAlign = 'middle'; 
+
+    centerButton.appendChild(centerIcon);
+
     optionsBubble.appendChild(deleteButton);
     optionsBubble.appendChild(centerButton);
     document.body.appendChild(optionsBubble);
 
-    function positionOptionsBubble(target) {
-        const boundingRect = canvas.upperCanvasEl.getBoundingClientRect();
-        const textRect = target.getBoundingRect();
-        optionsBubble.style.left = `${boundingRect.left + textRect.left}px`;
-        optionsBubble.style.top = `${boundingRect.top + textRect.top - optionsBubble.offsetHeight}px`;
-    }
+    document.body.appendChild(optionsBubble);
 
+    const canvasElement = canvas.upperCanvasEl; 
+    const rect = canvasElement.getBoundingClientRect();
+    optionsBubble.style.left = `${rect.left}px`; 
+    optionsBubble.style.top = `${rect.top - optionsBubble.offsetHeight}px`; 
+    document.body.appendChild(optionsBubble);
+    
     textElement.on('selected', () => {
-        positionOptionsBubble(textElement);
         optionsBubble.style.display = 'block';
     });
 
@@ -644,7 +653,7 @@ function createOptionsBubble(textElement) {
     });
 
     textElement.on('moving', () => {
-        positionOptionsBubble(textElement);
+       
     });
 
     deleteButton.addEventListener('click', () => {
@@ -656,98 +665,71 @@ function createOptionsBubble(textElement) {
         textElement.set({
             left: canvasWidth / 2
         });
-        textElement.setCoords();  // Update the bounding box
+        textElement.setCoords();  
         canvas.renderAll();
-        positionOptionsBubble(textElement);
     });
 
-    // this also works but with 8 clicks more visiblie
-
-    canvas.on('selection:created', function(e) {
-        if (e.selected.length > 1) {
-            e.selected.forEach(element => {
-                // canvas.remove(element)
-                console.log(element)
-                // positionOptionsBubble(element)
-            });
-            canvas.discardActiveObject();
-            canvas.renderAll();
-        } 
-    });
-
-   
-
-
-    // canvas.on('selection:cleared', function() {
-        
-    // });
-
-
-    //////////////////////trying to make it delete all instead of one at a time on click 
-
-    // canvas.on('selection:created', function(e) {
-        
-    //     if (e.selected.length > 1) {
-    //         // Remove any existing options bubbles
-    //         const existingBubbles = document.querySelectorAll('.optionsBubble');
-    //         // existingBubbles.forEach(bubble => bubble.remove());
-    //         existingBubbles.forEach(bubble => bubble.style.display = 'none');
+    if (!window.fabricEventListenersAdded) {
+        window.fabricEventListenersAdded = true;
     
-    //         // Create a new options bubble
-    //         const newOptionsBubble = document.createElement('div');
-    //         newOptionsBubble.className = 'newOptionsBubble'; // Use original class name
-    //         newOptionsBubble.style.position = 'absolute';
-    //         newOptionsBubble.style.display = 'block'; // Initially show the options bubble
-    //         newOptionsBubble.style.background = 'white';
-    //         newOptionsBubble.style.border = '1px solid #ccc';
-    //         newOptionsBubble.style.padding = '5px';
-    //         newOptionsBubble.style.borderRadius = '5px';
-    //         newOptionsBubble.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.2)';
-    //         newOptionsBubble.style.zIndex = '1000';
-    
-    //         const deleteButton = document.createElement('button');
-    //         deleteButton.innerText = 'Delete';
-    //         deleteButton.style.background = '#ff4d4d';
-    //         deleteButton.style.color = 'white';
-    //         deleteButton.style.border = 'none';
-    //         deleteButton.style.padding = '5px 10px';
-    //         deleteButton.style.cursor = 'pointer';
-    //         deleteButton.style.borderRadius = '3px';
-    
-    //         const centerButton = document.createElement('button');
-    //         centerButton.innerText = 'Center';
-    //         centerButton.style.background = '#4caf50';
-    //         centerButton.style.color = 'white';
-    //         centerButton.style.border = '3px solid black';
-    //         centerButton.style.padding = '5px 10px';
-    //         centerButton.style.cursor = 'pointer';
-    //         centerButton.style.borderRadius = '3px';
-    //         centerButton.style.marginLeft = '5px';
-    
-    //         newOptionsBubble.appendChild(deleteButton);
-    //         newOptionsBubble.appendChild(centerButton);
-    //         document.body.appendChild(newOptionsBubble);
-    
-    //         // Handle button actions
-    //         deleteButton.addEventListener('click', function() {
-    //             e.selected.forEach(element => {
-    //                 canvas.remove(element);
-    //             });
-    //             newOptionsBubble.remove(); // Remove options bubble after deletion
-    //         });
-    //     } else {
-    //         // Remove any existing newOptionsBubble
+        canvas.on('selection:created', function(e) {
+            const selectedObjects = e.selected;
+
+            if (e.selected.length > 1) {
             
-    //     }
-    // });
+            const existingBubbles = document.querySelectorAll('.optionsBubble');
+            existingBubbles.forEach(bubble => bubble.style.display = 'none');
 
-    // canvas.on('selection:cleared', ()=> {
-    //     console.log('nothing is selected')
+            const newOptionsBubble = document.createElement('div');
+            newOptionsBubble.className = 'newOptionsBubble'; 
+            newOptionsBubble.style.position = 'absolute';
+            newOptionsBubble.style.display = 'block';
+            newOptionsBubble.style.background = 'white';
+            newOptionsBubble.style.border = '1px solid #ccc';
+            newOptionsBubble.style.padding = '5px';
+            newOptionsBubble.style.borderRadius = '5px';
+            newOptionsBubble.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.2)';
+            newOptionsBubble.style.zIndex = '1000';
+
+            const deleteButton = document.createElement('button');
+            deleteButton.style.background = 'lightgray';
+            deleteButton.style.padding = '5px 10px';
+            deleteButton.style.cursor = 'pointer';
+            deleteButton.style.borderRadius = '3px';
         
-    // });
+            const deleteIcon = document.createElement('img');
+            deleteIcon.src = 'icons/delete.png';
+            deleteIcon.style.width = '30px'; 
+            deleteIcon.style.height = '30px'; 
+            deleteIcon.style.verticalAlign = 'middle'; 
+            deleteButton.appendChild(deleteIcon);
 
-
-    // 
+            newOptionsBubble.appendChild(deleteButton);
+            
+            
+           ///////this appends it to the top of the canvas perfectly
+            const canvasElement = canvas.upperCanvasEl; 
+            const rect = canvasElement.getBoundingClientRect();
+            newOptionsBubble.style.left = `${rect.left}px`; 
+            newOptionsBubble.style.top = `${rect.top - newOptionsBubble.offsetHeight}px`; 
+            document.body.appendChild(newOptionsBubble);
+                
+              deleteButton.addEventListener('click', function() {
+                e.selected.forEach(element => {
+                    canvas.remove(element);
+                });
+                newOptionsBubble.remove(); 
+              });
+          }
+        });
+    
+        canvas.on('selection:cleared', function(e) {
+            const newOptionsBubble = document.querySelector('.newOptionsBubble')
+            if(newOptionsBubble){
+                newOptionsBubble.remove()
+            }
+        });
+    }
 }
 
 // Load the initial theme image
@@ -789,12 +771,11 @@ function changeBackgroundImage(url) {
 
 // Handle the click events on the theme buttons
 document.querySelector('.wrapper-for-themes').addEventListener('click', function(e) {
-    const target = e.target;
-
-    if (target.classList.contains('theme1')) {
+    const target = e.target.classList;
+    if (target.contains('theme1')) {
         changeBackgroundImage('themes/theme1.jpg');
-    } else if (target.classList.contains('theme2')) {
-        changeBackgroundImage('themes/theme2.jpg');
+    } else if (target.contains('theme2')) {
+        changeBackgroundImage('themes/theme2.jpg'); 
     }
 });
 
