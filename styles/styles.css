@@ -120,64 +120,6 @@ body, html{
   outline: 2px dashed ghostwhite;
 }
 
-/* .name-one{
-  display: flex;
-  flex-direction: column;
-}
-
-.line{
-  width: 100px;
-  background-color: rgba(0, 0, 0, 0.575);
-  height: 1px;
-}
-
-.name-two{
-  display: flex;
-  flex-direction: column;
-}
-
-.text1{
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-  margin-top: 20px;
-  line-height: 2.5rem;
-  margin: 0 auto;
-  font-family: cursive;
-  font-weight: bolder;
-  color: #87cefa;
-}
-
-.text2{
-  font-size: 1rem;
-  margin-bottom: 5px;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  color: rgb(56, 56, 56);
-}
-
-.text3{
-  font-size: 2rem;
-  color: black;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
-.text4{
-  color: rgb(56, 56, 56);
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  margin-bottom: 10px;
-  font-size: 1rem;
-  max-width: 50%;
-}
-
-.text5, .text6{
-  color: rgb(56, 56, 56);
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  margin-bottom: 10px;
-  font-weight: bold;
-} */
-
 .text-inputs-wrapper{
   display: flex;
   justify-content: center;
@@ -265,7 +207,6 @@ label{
   background-repeat: no-repeat;
   background-size: contain;
   overflow: hidden;
-  outline: 2px dashed ghostwhite;
 }
 .theme2{
   background-image: url('../themes/theme2.jpg');

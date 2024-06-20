@@ -467,7 +467,8 @@ function setInitialThemeImage(img) {
         fontFamily: 'serif',
         originX: 'center',
         originY: 'center',
-        width: canvasWidth * 0.5,
+        // width: canvasWidth * 0.5,
+        width: canvasWidth * 0.48
     });
 
     canvas.add(text2);
@@ -769,9 +770,21 @@ function changeBackgroundImage(url) {
     });
 }
 
+
+const getAllThemes = document.querySelectorAll('.theme')
+
 // Handle the click events on the theme buttons
 document.querySelector('.wrapper-for-themes').addEventListener('click', function(e) {
     const target = e.target.classList;
+
+    if(target.contains('theme')){
+        getAllThemes.forEach((theme)=>{
+            theme.classList.remove('activeTheme');
+        })
+    }
+
+    target.add('activeTheme');
+
     if (target.contains('theme1')) {
         changeBackgroundImage('themes/theme1.jpg');
     } else if (target.contains('theme2')) {
