@@ -204,6 +204,7 @@ function setInitialThemeImage(img) {
         originY: 'center',
         width: canvasWidth * 0.48,
         objectCaching: false,
+        transparentCorners: false,
     });
     
     canvas.add(text);
@@ -224,7 +225,7 @@ function setInitialThemeImage(img) {
         fontFamily: 'serif',
         originX: 'center',
         originY: 'center',
-        // width: canvasWidth * 0.5,
+        transparentCorners: false,
         width: canvasWidth * 0.48
     });
 
@@ -246,13 +247,29 @@ function setInitialThemeImage(img) {
         originX: 'center',
         originY: 'center',
         width: canvasWidth * 0.5,
+        transparentCorners: false,
     });
 
     canvas.add(text3);
     textElements.push(text3);
     createOptionsBubble(text3);
 
-    const text4Top = text3Top + fontSize * 1;
+    const lineTop = text3Top + (fontSize * 0.7) / 2 + 5; // 5 pixels below text3
+    const lineLeftStart = textLeft - (canvasWidth * 0.22);
+    const lineLeftEnd = textLeft + (canvasWidth * 0.22);
+
+    // Create and add the dashed line
+    const dashedLine = new fabric.Line([lineLeftStart, lineTop, lineLeftEnd, lineTop], {
+        stroke: 'rgb(44, 44, 44)',
+        strokeWidth: 4,
+        strokeDashArray: [5, 5], // 5px dash, 5px gap
+        originX: 'center',
+        originY: 'center'
+    });
+    canvas.add(dashedLine);
+    createOptionsBubble(dashedLine);
+
+    const text4Top = text3Top + fontSize * 1.2;
     const text4 = new fabric.Textbox('For completing the Sunshine Preschool class of 2024', {
         left: textLeft,
         top: text4Top,
@@ -265,6 +282,7 @@ function setInitialThemeImage(img) {
         fontFamily: 'serif',
         originX: 'center',
         originY: 'center',
+        transparentCorners: false,
         width: canvasWidth * 0.4,
     });
 
@@ -285,7 +303,8 @@ function setInitialThemeImage(img) {
             hasBorders: true,
             lockRotation: true,
             originX: 'left',
-            originY: 'center'
+            originY: 'center',
+            transparentCorners: false,
         }
     );
 
@@ -302,7 +321,8 @@ function setInitialThemeImage(img) {
             hasBorders: true,
             lockRotation: true,
             originX: 'left',
-            originY: 'center'
+            originY: 'center',
+            transparentCorners: false,
         }
     );
 
@@ -322,6 +342,7 @@ function setInitialThemeImage(img) {
         originX: 'center',
         originY: 'top',
         width: signatureLineWidth,
+        transparentCorners: false,
     });
 
     canvas.add(nameTextBox1);
@@ -340,6 +361,7 @@ function setInitialThemeImage(img) {
         originX: 'center',
         originY: 'top',
         width: signatureLineWidth,
+        transparentCorners: false,
     });
 
     canvas.add(nameTextBox2);
@@ -425,6 +447,8 @@ function createOptionsBubble(textElement) {
 
     if (!window.fabricEventListenersAdded) {
         window.fabricEventListenersAdded = true;
+
+        ////selecting more than one element
     
         canvas.on('selection:created', function(e) {
             const selectedObjects = e.selected;
@@ -520,6 +544,39 @@ function createOptionsBubble(textElement) {
     }
 }
 
+
+        const addTextInput = document.getElementById('addTextInput');
+        const submitTextBtn = document.querySelector('.submitTextBtn');
+
+        // Add event listener to the button
+        submitTextBtn.addEventListener('click', function(e) {
+            e.preventDefault()
+            const text = addTextInput.value;
+
+            if (text) {
+                const textBox = new fabric.Textbox(text, {
+                    left: 200,
+                    top: 200,
+                    width: 200,
+                    fontSize: 50,
+                    transparentCorners: false,
+                    textAlign: 'center',
+                    originX: 'center',
+                    originY: 'center',            
+                });
+
+                canvas.add(textBox);
+                canvas.setActiveObject(textBox);
+
+                textElements.push(textBox);
+                createOptionsBubble(textBox);
+                
+                addTextInput.value = '';
+
+                canvas.renderAll()
+            }
+        });
+
 // Load the initial theme image
 fabric.Image.fromURL('themes/theme1.jpg', function(img) {
     setInitialThemeImage(img);
@@ -580,25 +637,7 @@ document.querySelector('.wrapper-for-themes').addEventListener('click', function
 });
 
 
-///////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/////////////////////////////// the print btn
 
 
 

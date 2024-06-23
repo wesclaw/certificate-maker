@@ -87,26 +87,6 @@ body, html{
   align-items: center;
 }
 
-/* .document{
-  width: 600px;
-  height: 400px;
-  display: none;
-  width: 700px;
-  height: 500px;
-  background-color: white;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  flex-direction: column;
-  background-image: url('../themes/theme1.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  overflow:hidden;
-} */
-
 .wrapper-for-names{
   width: 400px;
   height: 100px;
