@@ -87,14 +87,14 @@ body, html{
   align-items: center;
 }
 
-.document{
-  /* width: 600px;
-  height: 400px; */
+/* .document{
+  width: 600px;
+  height: 400px;
   display: none;
   width: 700px;
   height: 500px;
   background-color: white;
-  /* display: flex; */
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
@@ -105,7 +105,7 @@ body, html{
   background-repeat: no-repeat;
   background-size: cover;
   overflow:hidden;
-}
+} */
 
 .wrapper-for-names{
   width: 400px;
@@ -117,7 +117,7 @@ body, html{
 }
 
 .wrapper-for-themes button:hover{
-  outline: 2px dashed ghostwhite;
+  outline: 2px dashed #ccc;
 }
 
 .text-inputs-wrapper{
@@ -168,27 +168,39 @@ body, html{
   border-radius: 3px;
 }
 
+.input-number:focus{
+  border: 2px dashed rgba(248, 248, 255, 0.582);
+  outline: none;
+}
+
 .input-color{
   width: 100%;
   height: 100%;
   background-color: black;
-  border: 1px solid ghostwhite;
-  outline: 1px solid ghostwhite;
-  color: ghostwhite;
+  border: 2px solid #ccc;
   cursor: pointer;
   border-radius: 3px;
 }
 
+.input-color:focus{
+  border: 2px dashed rgba(248, 248, 255, 0.582);
+  outline: none;
+}
+
 select{
   background-color: black;
-  border: 1px solid ghostwhite;
-  outline: 1px solid ghostwhite;
+  border: 2px solid #ccc;
   color: ghostwhite;
   font-size: 1rem;
   cursor: pointer;
   width: 100%;
   padding: 7px;
   border-radius: 3px;
+}
+
+select:focus{ 
+  border: 2px dashed rgba(248, 248, 255, 0.582);
+  outline: none;
 }
 
 label{
@@ -217,7 +229,7 @@ label{
 }
 
 .activeTheme{
-  outline: 2px dashed ghostwhite;
+  outline: 2px dashed #ccc;
 }
 
 .print-btn{
@@ -260,3 +272,49 @@ label{
 }
 
 
+.inputText{
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 3px;
+  outline: none;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  color: ghostwhite;
+}
+
+.inputText:focus{
+  border: 2px dashed rgba(248, 248, 255, 0.582);
+}
+
+.add-text-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 5px;
+}
+
+.submitTextBtn{
+  border-radius: 3px;
+  outline: none;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.addIcon{
+  width: 40px;
+  height: 40px;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  box-shadow: 0px 2px 3px rgb(65, 211, 143);
+}
+
+.addIcon:hover{
+  box-shadow: 0px 1px 10px rgb(65, 211, 143);
+}

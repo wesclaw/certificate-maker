@@ -134,251 +134,7 @@
 //     window.location.reload();
 // });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-///////////////////////////without JSPDF creates positioned text elements onload
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const canvasWidth = window.innerWidth - 400;
-// const canvasHeight = window.innerHeight - 50; 
-
-// const canvas = new fabric.Canvas('canvas', {
-//     width: canvasWidth,
-//     height: canvasHeight,
-//     backgroundColor: 'transparent'
-// });
-
-// let themeImage;
-
-// fabric.Image.fromURL('themes/theme1.jpg', function(img) {
-//     // Set canvas dimensions to match viewport size
-//     canvas.setDimensions({
-//         width: canvasWidth,
-//         height: canvasHeight
-//     });
-
-//     // Calculate the scale to fit the image within the canvas
-//     const scaleFactor = Math.min(
-//         canvasWidth / img.width,
-//         canvasHeight / img.height
-//     );
-
-//     // Set image dimensions and position
-//     img.scale(scaleFactor).set({
-//         left: (canvasWidth - img.width * scaleFactor) / 2,
-//         top: (canvasHeight - img.height * scaleFactor) / 2,
-//         selectable: false, 
-//         hasControls: false,
-//         hasBorders: false, 
-//         lockMovementX: true,
-//         lockMovementY: true,
-//         hoverCursor: 'default',
-//         crossOrigin: 'anonymous', 
-//         imageSmoothing: true,
-//         imageSmoothingQuality: 'high'
-//     });
-
-//     canvas.add(img);
-//     themeImage = img;
-
-//     const fontSize = Math.min(img.width * scaleFactor, img.height * scaleFactor) * 0.1;
-//     const textLeft = img.left + (img.width * scaleFactor) / 2; 
-//     const textTop = img.top + (img.height * scaleFactor) * 0.28 ////change this for text top position
-
-//     const text = new fabric.Textbox('Certificate Of Graduation', {
-//         // left: canvasWidth / 2, 
-//         // top: canvasHeight / 2, 
-//         left: textLeft,
-//         top: textTop,
-//         fontSize: fontSize,
-//         fill: '#87cefa',
-//         fontWeight: '600',
-//         editable: true,
-//         textAlign: 'center',
-//         lineHeight: 0.8,
-//         fontFamily: 'cursive',
-//         originX: 'center',
-//         originY: 'center',
-
-//         width: canvasWidth * 0.48, ////change this for the starting text wrap pos
-//     });
-
-//     canvas.add(text);
-
-//     const text2Top = textTop + fontSize * 1.5; // Adjust this value as needed for spacing
-//     const text2 = new fabric.Textbox('This certificate is granted to', {
-//         left: textLeft,
-//         top: text2Top,
-//         fontSize: fontSize * 0.4, // Adjust font size if needed
-//         fill: 'black', // Light blue color
-//         fontWeight: '200',
-//         editable: true,
-//         textAlign: 'center',
-//         lineHeight: 0.8,
-//         fontFamily: 'serif',
-//         originX: 'center',
-//         originY: 'center',
-//         width: canvasWidth * 0.5,
-//     });
-
-//     canvas.add(text2);
-
-//     const text3Top = text2Top + fontSize * .8; // Adjust this value as needed for spacing
-//     const text3 = new fabric.Textbox('FULL NAME', {
-//         left: textLeft,
-//         top: text3Top,
-//         fontSize: fontSize * 0.7, // Adjust font size if needed
-//         fill: 'black', // Light blue color
-//         fontWeight: 'bold',
-//         editable: true,
-//         textAlign: 'center',
-//         lineHeight: 0.8,
-//         fontFamily: 'serif',
-//         originX: 'center',
-//         originY: 'center',
-//         width: canvasWidth * 0.5,
-//     });
-
-//     canvas.add(text3);
-
-//     const text4Top = text3Top + fontSize * 1; // Adjust this value as needed for spacing
-//     const text4 = new fabric.Textbox('For completing the Sunshine Preschool class of 2024', {
-//         left: textLeft,
-//         top: text4Top,
-//         fontSize: fontSize * 0.4, // Adjust font size if needed
-//         fill: 'black', // Light blue color
-//         fontWeight: '200',
-//         editable: true,
-//         textAlign: 'center',
-//         lineHeight: 0.8,
-//         fontFamily: 'serif',
-//         originX: 'center',
-//         originY: 'center',
-//         width: canvasWidth * 0.4,
-//         lineHeight: 1.1,
-//     });
-
-//     canvas.add(text4);
-
-//     const signatureLineTop = text4Top + (fontSize * 0.6) * 2; // Adjust this value for spacing
-
-//     const signatureLineWidth = canvasWidth * 0.15; 
-
-//     const signatureLine = new fabric.Line(
-//         [textLeft - canvasWidth * 0.2, signatureLineTop, textLeft - canvasWidth * 0.05, signatureLineTop],
-//         {
-//             stroke: '#000000', // Black color
-//             strokeWidth: 2, // Adjust the line width here
-//             selectable: true, // Make the line selectable
-//             hasControls: true, // Enable controls for resizing
-//             hasBorders: true, // Enable borders for the line
-//             lockRotation: true, // Lock rotation
-//             originX: 'left',
-//             originY: 'center'
-//         }
-//     );
-
-//     canvas.add(signatureLine);
-
-//     const signatureLine2 = new fabric.Line(
-//         [textLeft + canvasWidth * 0.05, signatureLineTop, textLeft + canvasWidth * 0.05 + signatureLineWidth, signatureLineTop],
-//         {
-//             stroke: '#000000', // Black color
-//             strokeWidth: 2, // Adjust the line width here
-//             selectable: true, // Make the line selectable
-//             hasControls: true, // Enable controls for resizing
-//             hasBorders: true, // Enable borders for the line
-//             lockRotation: true, // Lock rotation
-//             originX: 'left',
-//             originY: 'center'
-//         }
-//     );
-
-//     canvas.add(signatureLine2);
-
-//     const nameTextBoxTop = signatureLineTop + fontSize * 0.1; // Adjust this value for spacing
-//     const nameTextBox1 = new fabric.Textbox('Director', {
-//         left: textLeft - canvasWidth * 0.125, // Center under the left signature line
-//         top: nameTextBoxTop,
-//         fontSize: fontSize * 0.3, // Adjust font size if needed
-//         fill: '#000000', // Black color
-//         editable: true,
-//         textAlign: 'center',
-//         lineHeight: 1.2, // Adjust line height as needed
-//         fontFamily: 'cursive',
-//         originX: 'center',
-//         originY: 'top',
-//         width: signatureLineWidth,
-//     });
-
-//     canvas.add(nameTextBox1);
-
-//     const nameTextBox2 = new fabric.Textbox('Teacher', {
-//         left: textLeft + canvasWidth * 0.125, // Center under the right signature line
-//         top: nameTextBoxTop,
-//         fontSize: fontSize * 0.3, // Adjust font size if needed
-//         fill: '#000000', // Black color
-//         editable: true,
-//         textAlign: 'center',
-//         lineHeight: 1.2, // Adjust line height as needed
-//         fontFamily: 'cursive',
-//         originX: 'center',
-//         originY: 'top',
-//         width: signatureLineWidth,
-//     });
-
-//     canvas.add(nameTextBox2);
-
-//     canvas.renderAll();
-// });
-
-// /////////////////////////////////
-
-/////////////////////////////////
-
-
-
-
-
-
-//////////////////////////////////////
-
-
-
-
-
+/////////////////above is with JSPDF
 
 const wrapperForThemes = document.querySelector('.wrapper-for-themes');
 
@@ -455,6 +211,7 @@ function setInitialThemeImage(img) {
     createOptionsBubble(text);
 
     const text2Top = textTop + fontSize * 1.5;
+
     const text2 = new fabric.Textbox('This certificate is granted to', {
         left: textLeft,
         top: text2Top,
@@ -653,10 +410,6 @@ function createOptionsBubble(textElement) {
         optionsBubble.style.display = 'none';
     });
 
-    textElement.on('moving', () => {
-       
-    });
-
     deleteButton.addEventListener('click', () => {
         canvas.remove(textElement);
         optionsBubble.style.display = 'none';
@@ -706,7 +459,23 @@ function createOptionsBubble(textElement) {
             deleteButton.appendChild(deleteIcon);
 
             newOptionsBubble.appendChild(deleteButton);
-            
+
+            const newCenterButton = document.createElement('button');
+            newCenterButton.style.background = 'ghostwhite';
+            newCenterButton.style.padding = '5px 10px';
+            newCenterButton.style.cursor = 'pointer';
+            newCenterButton.style.borderRadius = '3px';
+            newCenterButton.style.marginLeft = '5px';
+        
+            const newCenterIcon = document.createElement('img');
+            newCenterIcon.src = 'icons/center.png'; 
+            newCenterIcon.style.width = '30px'; 
+            newCenterIcon.style.height = '30px'; 
+            newCenterIcon.style.verticalAlign = 'middle'; 
+        
+            newCenterButton.appendChild(newCenterIcon);
+            newOptionsBubble.appendChild(newCenterButton);
+
             
            ///////this appends it to the top of the canvas perfectly
             const canvasElement = canvas.upperCanvasEl; 
@@ -721,6 +490,24 @@ function createOptionsBubble(textElement) {
                 });
                 newOptionsBubble.remove(); 
               });
+                
+            newCenterButton.addEventListener('click', function() {
+                let activeObject = canvas.getActiveObject();
+                
+                if (activeObject && activeObject.type === 'activeSelection') {
+                    let group = activeObject.toGroup();
+                    let groupCenterX = (canvas.getWidth() / 2) - (group.width / 2);
+            
+                    group.set({
+                        left: groupCenterX
+                    }).setCoords();
+            
+                    canvas.discardActiveObject();
+                    group.toActiveSelection();
+            
+                    canvas.renderAll();
+                }
+            }); 
           }
         });
     
@@ -841,7 +628,7 @@ async function copy(e) {
             y: top,
             width: width,
             height: height,
-            scale: 5,
+            scale: 4,
         });
 
         // Convert the canvas to an image data URL
