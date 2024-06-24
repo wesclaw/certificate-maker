@@ -147,13 +147,10 @@ let themeImage;
 
 const textElements = [];
 
-const fontSelect = document.getElementById('fontSelect');
-
 let fontFamily;
-let fontWeight;
+let fontSize;
 let textColor;
 let lineHeight;
-
 
 function setInitialThemeImage(img) {
     
@@ -423,7 +420,9 @@ function createOptionsBubble(textElement) {
     optionsBubble.style.left = `${rect.left}px`; 
     optionsBubble.style.top = `${rect.top - optionsBubble.offsetHeight}px`; 
     document.body.appendChild(optionsBubble);
-    
+
+    //////////////////////////////////////////////////////////////
+   
     textElement.on('selected', () => {
         optionsBubble.style.display = 'block';
     });
@@ -444,6 +443,8 @@ function createOptionsBubble(textElement) {
         textElement.setCoords();  
         canvas.renderAll();
     });
+
+
 
     if (!window.fabricEventListenersAdded) {
         window.fabricEventListenersAdded = true;
@@ -635,6 +636,7 @@ document.querySelector('.wrapper-for-themes').addEventListener('click', function
         changeBackgroundImage('themes/theme2.jpg'); 
     }
 });
+
 
 
 /////////////////////////////// the print btn
