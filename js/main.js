@@ -214,7 +214,7 @@ function setInitialThemeImage(img) {
         left: textLeft,
         top: text2Top,
         fontSize: fontSize * 0.4,
-        fill: 'black',
+        fill: '#000000',
         fontWeight: '200',
         editable: true,
         textAlign: 'center',
@@ -235,7 +235,7 @@ function setInitialThemeImage(img) {
         left: textLeft,
         top: text3Top,
         fontSize: fontSize * 0.7,
-        fill: 'black',
+        fill: '#000000',
         fontWeight: 'bold',
         editable: true,
         textAlign: 'center',
@@ -257,7 +257,7 @@ function setInitialThemeImage(img) {
 
     // Create and add the dashed line
     const dashedLine = new fabric.Line([lineLeftStart, lineTop, lineLeftEnd, lineTop], {
-        stroke: 'rgb(44, 44, 44)',
+        stroke: '#000000',
         strokeWidth: 4,
         strokeDashArray: [5, 5], // 5px dash, 5px gap
         originX: 'center',
@@ -271,7 +271,7 @@ function setInitialThemeImage(img) {
         left: textLeft,
         top: text4Top,
         fontSize: fontSize * 0.4,
-        fill: 'black',
+        fill: '#000000',
         fontWeight: '200',
         editable: true,
         textAlign: 'center',
@@ -422,10 +422,65 @@ function createOptionsBubble(textElement) {
     document.body.appendChild(optionsBubble);
 
     //////////////////////////////////////////////////////////////
-   
+
+    const fontSelect = document.getElementById('fontSelect');
+    const fontSizeInput = document.getElementById('fontSizeInput');
+    const fontColorInput = document.getElementById('fontColorInput')
+
+    function changeStyles(textElement) {
+        const getFontFamily = fontSelect.value;
+        textElement.set('fontFamily', getFontFamily);
+        textElement.canvas.renderAll(); 
+    }
+
+    function changeFontSize(textElement) {
+        const getFontSize = fontSizeInput.value;
+        const fontSize = Math.floor(parseInt(getFontSize, 10));
+        textElement.set('fontSize', fontSize);
+        textElement.canvas.renderAll();
+    }
+
+    function changeFontColor(textElement){
+        const getFontColor = fontColorInput.value;
+        textElement.set('fill', getFontColor);
+        textElement.set('stroke', getFontColor);
+        textElement.canvas.renderAll();
+    }
+
     textElement.on('selected', () => {
         optionsBubble.style.display = 'block';
+        const activeObject = canvas.getActiveObject();
+        if (activeObject && activeObject.type === 'textbox') {
+            fontSelect.value = activeObject.fontFamily || 'Arial'; 
+            fontSizeInput.value = Math.ceil(activeObject.fontSize) || 40;
+            fontColorInput.value = activeObject.fill || '#000000';
+        }else if(activeObject.type === 'line'){
+            fontColorInput.value = activeObject.stroke || '#000000';
+        }
     });
+
+    fontSelect.addEventListener('change', () => {
+        const activeObject = canvas.getActiveObject();
+        if (activeObject && activeObject.type === 'textbox') {
+            changeStyles(activeObject);
+        }
+    })
+
+    fontSizeInput.addEventListener('input', () => {
+        const activeObject = canvas.getActiveObject();
+        if (activeObject && activeObject.type === 'textbox') {
+            changeFontSize(activeObject);
+        }
+    });
+
+    fontColorInput.addEventListener('input', () => {
+        const activeObject = canvas.getActiveObject();
+        if (activeObject && activeObject.type === 'textbox' || activeObject.type==='line') {
+            changeFontColor(activeObject);
+        }
+    });
+
+
 
     textElement.on('deselected', () => {
         optionsBubble.style.display = 'none';
